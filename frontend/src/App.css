@@ -132,11 +132,33 @@ input:focus, textarea:focus, select:focus {
 
 /* Print styles for orders */
 @media print {
-  nav, .bg-gradient-to-r {
+  nav, .bg-gradient-to-r, button:not(.print-button) {
     display: none !important;
   }
   
   .bg-white {
     box-shadow: none !important;
   }
+  
+  .print-order {
+    page-break-inside: avoid;
+  }
+  
+  .print-header {
+    border-bottom: 2px solid #000;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+}
+
+/* Print button styling */
+.print-button {
+  background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
+  box-shadow: 0 2px 4px rgba(255, 107, 0, 0.3);
+}
+
+.print-button:hover {
+  background: linear-gradient(135deg, #ff6b00 0%, #ff4500 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 107, 0, 0.4);
 }
