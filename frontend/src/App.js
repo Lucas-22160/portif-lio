@@ -502,7 +502,7 @@ function App() {
               onClick={() => setCurrentView('home')}
               className="text-2xl font-bold text-orange-500"
             >
-              🥟 Pastelaria Delícias
+              🥟 Garagem do Pastel
             </button>
             <div className="flex gap-4">
               <button 
