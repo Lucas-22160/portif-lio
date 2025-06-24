@@ -170,12 +170,16 @@ function App() {
       {/* About Section */}
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Sobre Nossa Pastelaria</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Sobre a Garagem do Pastel</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Há mais de 20 anos servindo os melhores pastéis da região! Nossa massa é feita diariamente 
+            Há mais de 20 anos servindo os melhores pastéis do bairro Nova Vitória! Nossa massa é feita diariamente 
             e nossos recheios são preparados com ingredientes selecionados. Venha experimentar nossos 
             sabores únicos e se apaixone pelo verdadeiro sabor do pastel brasileiro.
           </p>
+          <div className="mt-6 p-4 bg-orange-100 rounded-lg inline-block">
+            <p className="text-lg font-semibold text-orange-800">📍 Localização: Bairro Nova Vitória</p>
+            <p className="text-sm text-orange-600 mt-1">Servindo a comunidade com qualidade e tradição</p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
