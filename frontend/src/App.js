@@ -133,14 +133,88 @@ function App() {
     }
   };
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Pendente': return 'bg-yellow-100 text-yellow-800';
-      case 'Preparando': return 'bg-blue-100 text-blue-800';
-      case 'Pronto': return 'bg-green-100 text-green-800';
-      case 'Entregue': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
+  const printOrder = (order) => {
+    const printWindow = window.open('', '_blank');
+    const printContent = `
+      <html>
+        <head>
+          <title>Pedido - Garagem do Pastel</title>
+          <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #333; padding-bottom: 10px; }
+            .order-info { margin-bottom: 20px; }
+            .items-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            .items-table th, .items-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            .items-table th { background-color: #f2f2f2; }
+            .total { font-size: 18px; font-weight: bold; text-align: right; }
+            .status { padding: 5px 10px; border-radius: 5px; font-weight: bold; }
+            .status-pendente { background-color: #fef3c7; color: #92400e; }
+            .status-preparando { background-color: #dbeafe; color: #1e40af; }
+            .status-pronto { background-color: #d1fae5; color: #065f46; }
+            .status-entregue { background-color: #f3f4f6; color: #374151; }
+            .footer { margin-top: 30px; text-align: center; font-size: 12px; color: #666; }
+            @media print {
+              body { margin: 0; }
+              .no-print { display: none; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>🥟 Garagem do Pastel</h1>
+            <p>Bairro Nova Vitória</p>
+            <h2>Pedido #${order.id.substring(0, 8)}</h2>
+          </div>
+          
+          <div class="order-info">
+            <p><strong>Cliente:</strong> ${order.customer_name}</p>
+            <p><strong>Telefone:</strong> ${order.customer_phone}</p>
+            <p><strong>Data:</strong> ${new Date(order.created_at).toLocaleString('pt-BR')}</p>
+            <p><strong>Status:</strong> <span class="status status-${order.status.toLowerCase()}">${order.status}</span></p>
+            ${order.notes ? `<p><strong>Observações:</strong> ${order.notes}</p>` : ''}
+          </div>
+          
+          <table class="items-table">
+            <thead>
+              <tr>
+                <th>Sabor</th>
+                <th>Qtd</th>
+                <th>Preço Unit.</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${order.items.map(item => `
+                <tr>
+                  <td>${item.flavor_name}</td>
+                  <td>${item.quantity}</td>
+                  <td>R$ ${item.price.toFixed(2)}</td>
+                  <td>R$ ${(item.price * item.quantity).toFixed(2)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          
+          <div class="total">
+            <p>Total: R$ ${order.total_amount.toFixed(2)}</p>
+          </div>
+          
+          <div class="footer">
+            <p>Garagem do Pastel - Bairro Nova Vitória</p>
+            <p>Pedido impresso em ${new Date().toLocaleString('pt-BR')}</p>
+          </div>
+        </body>
+      </html>
+    `;
+    
+    printWindow.document.write(printContent);
+    printWindow.document.close();
+    
+    // Aguardar o carregamento e imprimir
+    printWindow.onload = function() {
+      printWindow.focus();
+      printWindow.print();
+    };
   };
 
   const renderHome = () => (
