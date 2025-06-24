@@ -458,24 +458,30 @@ function App() {
                   </div>
                 )}
 
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   <button 
                     onClick={() => updateOrderStatus(order.id, 'Preparando')}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
                   >
                     Preparando
                   </button>
                   <button 
                     onClick={() => updateOrderStatus(order.id, 'Pronto')}
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-200"
                   >
                     Pronto
                   </button>
                   <button 
                     onClick={() => updateOrderStatus(order.id, 'Entregue')}
-                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-200"
                   >
                     Entregue
+                  </button>
+                  <button 
+                    onClick={() => printOrder(order)}
+                    className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-200 flex items-center gap-2"
+                  >
+                    🖨️ Imprimir
                   </button>
                 </div>
               </div>
