@@ -395,13 +395,13 @@ function App() {
     );
   };
 
-  const renderReviews = () => {
-    const [newReview, setNewReview] = useState({
-      customer_name: '',
-      rating: 5,
-      comment: ''
-    });
+  const [newReview, setNewReview] = useState({
+    customer_name: '',
+    rating: 5,
+    comment: ''
+  });
 
+  const renderReviews = () => {
     const handleSubmitReview = (e) => {
       e.preventDefault();
       if (!newReview.customer_name || !newReview.comment) {
