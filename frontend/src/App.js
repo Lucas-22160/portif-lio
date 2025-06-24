@@ -311,8 +311,9 @@ function App() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">🥟 Nosso Cardápio</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">🥟 Cardápio da Garagem do Pastel</h1>
           <p className="text-lg text-gray-600">Escolha seus sabores favoritos e faça seu pedido!</p>
+          <p className="text-sm text-orange-600 font-semibold">📍 Bairro Nova Vitória</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
